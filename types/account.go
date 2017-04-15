@@ -15,7 +15,6 @@ import (
 type Account struct {
 	Email              string
 	DomainsCertificate *DomainCertificate
-	Logger             logger.Interface
 	PrivateKey         []byte
 	Registration       *acme.RegistrationResource
 }
@@ -32,11 +31,11 @@ func (a Account) GetRegistration() *acme.RegistrationResource {
 
 // GetPrivateKey returns private key.
 func (a Account) GetPrivateKey() crypto.PrivateKey {
-	if privateKey, err := x509.ParsePKCS1PrivateKey(a.PrivateKey); err == nil {
-		return privateKey
+	privateKey, err := x509.ParsePKCS1PrivateKey(a.PrivateKey)
+	if err != nil {
+		panic("invalid private key")
 	}
-	a.Logger.Printf("Cannot unmarshall private key %+v\n", a.PrivateKey)
-	return nil
+	return privateKey
 }
 
 // NewAccount creates a new account for the specified email and domain.
@@ -48,7 +47,6 @@ func NewAccount(email string, domain *Domain, logger logger.Interface) (*Account
 	}
 	account := &Account{
 		Email:      email,
-		Logger:     logger,
 		PrivateKey: x509.MarshalPKCS1PrivateKey(privateKey),
 	}
 	account.DomainsCertificate = &DomainCertificate{
