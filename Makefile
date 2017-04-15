@@ -1,13 +1,10 @@
 METALINTER_CONCURRENCY ?= 10
 
+BASEDIR := $(shell echo $${PWD})
+
 setup:
-	go get -v -u github.com/Masterminds/glide
-	go get -v -u github.com/githubnemo/CompileDaemon
 	go get -v -u github.com/alecthomas/gometalinter
-	go get -v -u github.com/jstemmer/go-junit-report
 	gometalinter --install --update
-	go get -u github.com/tools/godep
-	godep restore
 
 build: *.go fmt
 	go build .
@@ -44,4 +41,4 @@ watch:
 	CompileDaemon -color=true -build "make test"
 
 protobuf:
-	protoc -I ./examples/grpc/helloworld examples/grpc/helloworld/*.proto --go_out=plugins=grpc:examples/grpc/helloworld
+	@docker run --rm -v $(BASEDIR):/app -v $(GOPATH):/go -w /app znly/protoc --go_out=plugins=grpc:examples/grpc/helloworld -I examples/grpc/helloworld examples/grpc/helloworld/*.proto

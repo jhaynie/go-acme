@@ -1,0 +1,49 @@
+package: github.com/jhaynie/go-acme
+import:
+- package: github.com/Sirupsen/logrus
+  version: ^0.11.5
+- package: github.com/aws/aws-sdk-go
+  version: ^1.8.12
+  subpackages:
+  - aws
+  - aws/awserr
+  - aws/credentials
+  - aws/credentials/ec2rolecreds
+  - aws/ec2metadata
+  - aws/session
+  - service/s3
+- package: github.com/golang/protobuf
+  subpackages:
+  - proto
+- package: github.com/jhaynie/go-acme
+  version: ^0.0.2
+  subpackages:
+  - backend
+  - backend/backends
+  - backend/backends/fs
+  - backend/backends/null
+  - backend/backends/s3
+  - examples/grpc/helloworld
+  - types
+- package: github.com/jtblin/go-logger
+- package: github.com/xenolf/lego
+  version: ^0.3.1
+  subpackages:
+  - acme
+  - providers/dns/cloudflare
+  - providers/dns/digitalocean
+  - providers/dns/dnsimple
+  - providers/dns/dyn
+  - providers/dns/gandi
+  - providers/dns/googlecloud
+  - providers/dns/namecheap
+  - providers/dns/rfc2136
+  - providers/dns/route53
+  - providers/dns/vultr
+- package: golang.org/x/net
+  subpackages:
+  - context
+- package: google.golang.org/grpc
+  version: ^1.2.1
+  subpackages:
+  - credentials

@@ -1,5 +1,7 @@
 # go-acme
 
+> This is a fork of https://github.com/jtblin/go-acme to fix a few issues related to the latest version of Lego and to add a semver
+
 Add [Let's Encrypt](https://letsencrypt.org/) (ACME) support to generate and renew SSL certificates to go servers 
 using the DNS provider challenge so that it can be used for internal servers.
 

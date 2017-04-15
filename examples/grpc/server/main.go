@@ -9,9 +9,9 @@ import (
 	"google.golang.org/grpc/credentials"
 
 	log "github.com/Sirupsen/logrus"
-	"github.com/jtblin/go-acme"
-	pb "github.com/jtblin/go-acme/examples/grpc/helloworld"
-	"github.com/jtblin/go-acme/types"
+	acme "github.com/jhaynie/go-acme"
+	pb "github.com/jhaynie/go-acme/examples/grpc/helloworld"
+	"github.com/jhaynie/go-acme/types"
 	"golang.org/x/net/context"
 )
 

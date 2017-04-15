@@ -6,7 +6,7 @@ import (
 	"crypto/rsa"
 	"crypto/x509"
 
-	"github.com/jtblin/go-logger"
+	logger "github.com/jtblin/go-logger"
 	"github.com/xenolf/lego/acme"
 )
 
@@ -15,7 +15,7 @@ import (
 type Account struct {
 	Email              string
 	DomainsCertificate *DomainCertificate
-	Logger      logger.Interface
+	Logger             logger.Interface
 	PrivateKey         []byte
 	Registration       *acme.RegistrationResource
 }

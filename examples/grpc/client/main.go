@@ -37,7 +37,7 @@ import (
 	"flag"
 
 	log "github.com/Sirupsen/logrus"
-	pb "github.com/jtblin/go-acme/examples/grpc/helloworld"
+	pb "github.com/jhaynie/go-acme/examples/grpc/helloworld"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"

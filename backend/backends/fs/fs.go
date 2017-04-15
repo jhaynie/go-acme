@@ -8,8 +8,8 @@ import (
 	"path"
 	"sync"
 
-	"github.com/jtblin/go-acme/backend"
-	"github.com/jtblin/go-acme/types"
+	"github.com/jhaynie/go-acme/backend"
+	"github.com/jhaynie/go-acme/types"
 )
 
 const (

@@ -6,8 +6,8 @@ import (
 	"net/http"
 
 	log "github.com/Sirupsen/logrus"
-	"github.com/jtblin/go-acme"
-	"github.com/jtblin/go-acme/types"
+	acme "github.com/jhaynie/go-acme"
+	"github.com/jhaynie/go-acme/types"
 )
 
 var email, domain string

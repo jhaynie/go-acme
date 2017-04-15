@@ -10,12 +10,12 @@ import (
 	"os"
 	"time"
 
-	"github.com/jtblin/go-logger"
+	logger "github.com/jtblin/go-logger"
 	"github.com/xenolf/lego/acme"
 
-	"github.com/jtblin/go-acme/backend"
-	_ "github.com/jtblin/go-acme/backend/backends" // import all backends.
-	"github.com/jtblin/go-acme/types"
+	"github.com/jhaynie/go-acme/backend"
+	_ "github.com/jhaynie/go-acme/backend/backends" // import all backends.
+	"github.com/jhaynie/go-acme/types"
 )
 
 const (

@@ -11,7 +11,6 @@ import (
 	"github.com/xenolf/lego/providers/dns/namecheap"
 	"github.com/xenolf/lego/providers/dns/rfc2136"
 	"github.com/xenolf/lego/providers/dns/route53"
-	"github.com/xenolf/lego/providers/dns/vultr"
 )
 
 func newDNSProvider(dns string) (acme.ChallengeProvider, error) {
@@ -36,8 +35,8 @@ func newDNSProvider(dns string) (acme.ChallengeProvider, error) {
 		return route53.NewDNSProvider()
 	case "rfc2136":
 		return rfc2136.NewDNSProvider()
-	case "vultr":
-		return vultr.NewDNSProvider()
+	// case "vultr":
+	// 	return vultr.NewDNSProvider()
 	default:
 		panic("Unknown dns provider " + dns)
 	}
