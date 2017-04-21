@@ -222,7 +222,13 @@ func (a *ACME) CreateConfig(tlsConfig *tls.Config) error {
 	}
 	tlsConfig.GetCertificate = func(clientHello *tls.ClientHelloInfo) (*tls.Certificate, error) {
 		if clientHello.ServerName != a.Domain.Main {
-			return nil, errors.New("Unknown server name")
+			// check for any matches of SANs
+			for _, domain := range a.Domain.SANs {
+				if clientHello.ServerName == domain {
+					return dc.TLSCert, nil
+				}
+			}
+			return nil, errors.New("Unknown server name " + clientHello.ServerName)
 		}
 		return dc.TLSCert, nil
 	}
