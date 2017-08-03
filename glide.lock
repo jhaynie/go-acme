@@ -1,12 +1,12 @@
 hash: a7e5c9c28d0d752af5c40bd1a2aa95bf6479c8bc7b6a81bdf0b5253cfe9489b2
-updated: 2017-04-14T19:34:18.477136766-07:00
+updated: 2017-08-03T13:26:10.963307536-07:00
 imports:
 - name: cloud.google.com/go
-  version: 1ec09e65be459e9a0c9014ff8e4591d8c2f1bed6
+  version: 4451689e5ea847fdf5b7a4f679d9338077baf4e6
   subpackages:
   - compute/metadata
 - name: github.com/aws/aws-sdk-go
-  version: 7be45195c3af1b54a609812f90c05a7e492e2491
+  version: b33b08175d12b795daa7726c5577b39d06a2551c
   subpackages:
   - aws
   - aws/awserr
@@ -24,6 +24,7 @@ imports:
   - aws/request
   - aws/session
   - aws/signer/v4
+  - internal/shareddefaults
   - private/protocol
   - private/protocol/query
   - private/protocol/query/queryutil
@@ -33,32 +34,31 @@ imports:
   - service/route53
   - service/s3
   - service/sts
+- name: github.com/dnsimple/dnsimple-go
+  version: 5a5b427618a76f9eed5ede0f3e6306fbd9311d2e
+  subpackages:
+  - dnsimple
 - name: github.com/go-ini/ini
-  version: e3c2d47c61e5333f9aa2974695dd94396eb69c75
+  version: 3d73f4b845efdf9989fffd4b4e562727744a34ba
 - name: github.com/golang/protobuf
-  version: 2bba0603135d7d7f5cb73b2125beeda19c09f4ef
+  version: 748d386b5c1ea99658fd69fe9f03991ce86a90c1
   subpackages:
   - proto
-- name: github.com/JamesClonk/vultr
-  version: 0f156dd232bc4ebf8a32ba83fec57c0e4c9db69f
+  - ptypes/any
+- name: github.com/google/go-querystring
+  version: 53e6ce116135b80d037921a7fdd5138cf32d7a8a
   subpackages:
-  - lib
+  - query
 - name: github.com/jmespath/go-jmespath
   version: bd40a432e4c76585ef6b72d3fd96fb9b6dc7b68d
 - name: github.com/jtblin/go-logger
   version: af42e9ac3a4a9f1ef63bc09797dbc5c1c5925ec1
-- name: github.com/juju/ratelimit
-  version: 77ed1c8a01217656d2080ad51981f6e99adaa177
 - name: github.com/miekg/dns
-  version: 6ebcb714d36901126ee2807031543b38c56de963
+  version: 0f3adef2e2201d72e50309a36fc99d8a9d1a4960
 - name: github.com/Sirupsen/logrus
   version: ba1b36c82c5e05c4f912a88eab0dcd91a171688f
-- name: github.com/weppos/dnsimple-go
-  version: 65c1ca73cb19baf0f8b2b33219b7f57595a3ccb0
-  subpackages:
-  - dnsimple
 - name: github.com/xenolf/lego
-  version: 96a24777ffb3c6a25f6bb0b3a7997969c1fcde4b
+  version: 192334c448f7e1e271bca93062f2f295cb3f35c8
   subpackages:
   - acme
   - providers/dns/cloudflare
@@ -72,39 +72,48 @@ imports:
   - providers/dns/route53
   - providers/dns/vultr
 - name: golang.org/x/crypto
-  version: d172538b2cfce0c13cee31e647d0367aa8cd2486
+  version: 418008d6189cfc4ba88f220353d087d3ddfd7a31
   subpackages:
   - ocsp
 - name: golang.org/x/net
-  version: 4876518f9e71663000c348837735820161a42df7
+  version: f5079bd7f6f74e23c4d65efa0f4ce14cbd6a3c0f
   subpackages:
   - context
   - context/ctxhttp
   - http2
   - http2/hpack
+  - idna
   - internal/timeseries
+  - lex/httplex
   - publicsuffix
   - trace
 - name: golang.org/x/oauth2
-  version: a6bd8cefa1811bd24b86f8902872e4e8225f74c4
+  version: 96fca6c793ec32f068f97942ae3c7c073810dfc1
   subpackages:
   - google
   - internal
   - jws
   - jwt
 - name: golang.org/x/sys
-  version: f3918c30c5c2cb527c0b071a27c35120a6c0719a
+  version: d8f5ea21b9295e315e612b4bcf4bedea93454d4d
   subpackages:
   - unix
+- name: golang.org/x/text
+  version: 3bd178b88a8180be2df394a1fbb81313916f0e7b
+  subpackages:
+  - secure/bidirule
+  - transform
+  - unicode/bidi
+  - unicode/norm
 - name: google.golang.org/api
-  version: 48e49d1645e228d1c50c3d54fb476b2224477303
+  version: 3c107eb0fd1188c1e2f52a3101424b250162144b
   subpackages:
   - dns/v1
   - gensupport
   - googleapi
   - googleapi/internal/uritemplates
 - name: google.golang.org/appengine
-  version: 170382fa85b10b94728989dfcf6cc818b335c952
+  version: c5a90ac045b779001847fec87403f5cba090deae
   subpackages:
   - internal
   - internal/app_identity
@@ -115,11 +124,16 @@ imports:
   - internal/remote_api
   - internal/urlfetch
   - urlfetch
+- name: google.golang.org/genproto
+  version: 09f6ed296fc66555a25fe4ce95173148778dfa85
+  subpackages:
+  - googleapis/rpc/status
 - name: google.golang.org/grpc
-  version: 8050b9cbc271307e5a716a9d782803d09b0d6f2d
+  version: b8669c35455183da6d5c474ea6e72fbf55183274
   subpackages:
   - codes
   - credentials
+  - grpclb/grpc_lb_v1
   - grpclog
   - internal
   - keepalive
@@ -127,6 +141,7 @@ imports:
   - naming
   - peer
   - stats
+  - status
   - tap
   - transport
 - name: gopkg.in/square/go-jose.v1

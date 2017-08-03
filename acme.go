@@ -79,7 +79,7 @@ func (a *ACME) renewCertificate(client *acme.Client, account *types.Account) err
 			CertStableURL: dc.Certificate.CertStableURL,
 			PrivateKey:    dc.Certificate.PrivateKey,
 			Certificate:   dc.Certificate.Cert,
-		}, false)
+		}, false, false)
 		if err != nil {
 			return err
 		}
@@ -115,7 +115,7 @@ func (a *ACME) buildACMEClient(Account *types.Account) (*acme.Client, error) {
 }
 
 func (a *ACME) getDomainCertificate(client *acme.Client, domains []string) (*types.Certificate, error) {
-	certificate, failures := client.ObtainCertificate(domains, bundleCA, nil)
+	certificate, failures := client.ObtainCertificate(domains, bundleCA, nil, false)
 	if len(failures) > 0 {
 		return nil, fmt.Errorf("Cannot obtain certificates %s+v", failures)
 	}
